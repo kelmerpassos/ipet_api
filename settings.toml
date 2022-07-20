@@ -14,5 +14,9 @@ DB_FILE_NAME = ""
 INSTALLED_EXTENSIONS = [
     "ipet.ext.db:init_app",
     "ipet.ext.libs:init_app",
+    "ipet.ext.cli:init_app",
+    "ipet.ext.auth:init_app",
+    "ipet.ext.product:init_app",
+    "ipet.ext.customer:init_app",
     "ipet.ext.doc:init_app",
 ]
