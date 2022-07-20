@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:14.4
+    container_name: postgres
+    restart: always
+    tty: true
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: DBIPet
+
+  redis:
+    image: redis:7.0
+    container_name: redis
+    restart: always
+    tty: true
+
+  ipet:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: kelmerpassos/ipet
+    container_name: ipet
+    restart: always
+    tty: true
+    environment:
+      FLASK_ENV: development
+      FLASK_SECRET_KEY: chavedesenvolvimento
+      FLASK_SQLALCHEMY_DATABASE_URI: postgresql+psycopg2://postgres:postgres@db:5432/DBIPet
+      FLASK_REDIS_URL : redis://redis:6379/0
+      FLASK_JWT_ACCESS_TOKEN_EXPIRES: 3600
+      FLASK_JWT_REFRESH_TOKEN_EXPIRES: 604800
+      FLASK_SSH_HOST: "192.168.1.5"
+      FLASK_SSH_PORT: 22
+      FLASK_SSH_USER: "teste"
+      FLASK_SSH_PASSWORD: "teste123"
+      FLASK_DB_FILE_PATH: "/home/teste/Documents/db.txt"
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    

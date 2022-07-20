@@ -1,0 +1,7 @@
+black==22.6.0
+ipython==8.4.0
+isort==5.10.1
+pydocstyle==6.1.1
+pytest==7.1.2
+pytest-flask==1.2.0
+flask-shell-ipython==0.4.1

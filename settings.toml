@@ -1,0 +1,18 @@
+[default]
+SQLALCHEMY_TRACK_MODIFICATIONS = false
+SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://postgres:postgres@db:5432/DBIPet"
+REDIS_URL = "redis://redis:6379/0"
+JWT_ERROR_MESSAGE_KEY = "message"
+JWT_ACCESS_TOKEN_EXPIRES = 3600
+JWT_REFRESH_TOKEN_EXPIRES = 604800
+SSH_HOST = ""
+SSH_PORT = 22
+SSH_USER = ""
+SSH_PASSWORD = ""
+DB_FILE_PATH_FOLDER = ""
+DB_FILE_NAME = ""
+INSTALLED_EXTENSIONS = [
+    "ipet.ext.db:init_app",
+    "ipet.ext.libs:init_app",
+    "ipet.ext.doc:init_app",
+]
