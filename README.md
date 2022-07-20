@@ -85,14 +85,26 @@ Variáveis de ambiente existentes no sistema.
 - ```FLASK_SSH_USER``` - Usuário de acesso ao servidor SSH;
 - ```FLASK_SSH_PASSWORD``` - Senha de acesso ao servidor SSH;
 - ```FLASK_DB_FILE_PATH``` - Caminho da base offline de dados, no servidor SSH.
-## :traffic_light: Instalação(Desenvolvimento) sem docker
+## :traffic_light: Instalação (desenvolvimento) sem docker
 ##### **Clone o repositório com git clone**
 ```
-$ git clone https://<username>@github.org/<username>/ipe_api.git
+$ git clone https://github.com/kelmerpassos/ipet_api.git
 ```
 ##### **Acesse a pasta _ipet_**
 ```
 $ cd ipet
+```
+##### **Crie e ative o ambiente virtual**
+```
+$ python -m venv venv
+```
+##### **Em sistemas Linux ou macOS**
+```
+$ source venv/bin/activate 
+```
+##### **Em sistema Windows**
+```
+$ source venv/Scripts/Activate 
 ```
 ##### **Instale todas as dependências com o comando pip**
 ```
@@ -103,8 +115,8 @@ $ pip install -r requirements.txt
 $ pip install -r requirements-dev.txt
 ```
 Faça o download e instalação do PostgreSQL e do Redis:
-- [PostgreSQL 14.4](https://www.postgresql.org/about/news/postgresql-144-released-2470/#:~:text=The%20PostgreSQL%20Global%20Development%20Group,data%20corruption%20in%20your%20indexes.)
-- [Redis 7.0.*](https://redis.io/docs/getting-started/)
+- [PostgreSQL](https://www.postgresql.org/about/news/postgresql-144-released-2470/#:~:text=The%20PostgreSQL%20Global%20Development%20Group,data%20corruption%20in%20your%20indexes.)
+- [Redis](https://redis.io/docs/getting-started/)
 
 Faça a configuração das variáveis de ambiente básicas obrigatórias, vista na seção anterior.
 
@@ -113,3 +125,15 @@ Faça a configuração das variáveis de ambiente básicas obrigatórias, vista 
 $ flask run
 ```
 :bulb: No VsCode instale as extensões **Python**, **Pylance** para ajudar na identificação de erros de padrão de escrita do código.
+
+## :traffic_light: Instalação (desenvolvimento) com docker
+##### **Clone o repositório com git clone**
+```
+$ git clone https://github.com/kelmerpassos/ipet_api.git
+```
+##### **Acesse a pasta _ipet_**
+```
+$ cd ipet
+```
+Faça o download e instalação do Docker e Docker Compose:
+- [Docker](https://docs.docker.com/engine/install/)
