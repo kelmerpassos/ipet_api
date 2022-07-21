@@ -12,5 +12,5 @@ class Product(db.Model, ManagementMixin):
     full_name = db.Column(db.String(), nullable=False)
     full_description = db.Column(db.String(), nullable=False)
     brand = db.Column(db.String(), nullable=False)
-    price = db.Column(db.Numeric(precision=14, scale=2), nullable=False)
+    price = db.Column(db.Float(precision=14), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=db.func.now())

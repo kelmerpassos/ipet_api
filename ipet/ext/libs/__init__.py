@@ -17,5 +17,6 @@ def init_app(app: Flask):
     """
     ma.init_app(app)
     cors.init_app(app)
-    scheduler.init_app(app)
-    scheduler.start()
+    if not app.config["TESTING"]:
+        scheduler.init_app(app)
+        scheduler.start()
