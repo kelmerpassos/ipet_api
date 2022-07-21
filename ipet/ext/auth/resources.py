@@ -13,7 +13,7 @@ from flask_jwt_extended import (
 from flask_restful import Resource
 from marshmallow.exceptions import ValidationError
 from werkzeug.exceptions import BadRequest
-from werkzeug.security import safe_str_cmp
+from werkzeug.security import check_password_hash, generate_password_hash
 
 from ipet.ext.auth.models import User
 from ipet.ext.auth.schema import UserSchema
@@ -72,7 +72,7 @@ class TokenResource(Resource):
         """
         json_user = get_json_user(False)
         user = User.query.filter_by(username=json_user["username"]).first()
-        if user and safe_str_cmp(user.password, json_user["password"]):
+        if user and check_password_hash(user.password, json_user["password"]):
             return {
                 "token": create_access_token(identity=user),
                 "refresh_token": create_refresh_token(identity=user),
@@ -171,6 +171,7 @@ class CreateUserResource(Resource):
                         "message": {"type": "string"}
         """
         json_user = get_json_user()
+        json_user["password"] = generate_password_hash(json_user["password"])
         user = User(**json_user)
         user.save("Error adding user")
         return {"message": "User added successfully"}, CREATED
