@@ -120,6 +120,10 @@ Faça o download e instalação do PostgreSQL e do Redis:
 
 Faça a configuração das variáveis de ambiente básicas obrigatórias, vista na seção anterior.
 
+##### **Crie tabelas do banco de dados**
+```
+$ flask create-db
+```
 ##### **Rode a aplicação**
 ```
 $ flask run
