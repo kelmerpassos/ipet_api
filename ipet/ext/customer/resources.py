@@ -124,7 +124,7 @@ class ProdsByCustumerResource(Resource, GetListResorce):
     def __init__(self) -> None:
         """Initialize properties needed by generic CRUD functions."""
         super().__init__()
-        self.ClassSchema = ProductListSchema
+        self.ClassSchemaList = ProductListSchema
         self.QuerySchema = ProductsQuerySchema
         self.filter = {"full_name": Product.full_name, "brand": Product.brand}
         self.order_by = Product.id
