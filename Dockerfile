@@ -11,4 +11,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["flask", "run", "--port=5000", "--host=0.0.0.0"]
+CMD ["gunicorn", "-w=4", "-b=0.0.0.0:5000", "wsgi:app"]
