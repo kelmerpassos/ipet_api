@@ -125,15 +125,3 @@ Faça a configuração das variáveis de ambiente básicas obrigatórias, vista 
 $ flask run
 ```
 :bulb: No VsCode instale as extensões **Python**, **Pylance** para ajudar na identificação de erros de padrão de escrita do código.
-
-## :traffic_light: Instalação (desenvolvimento) com docker
-##### **Clone o repositório com git clone**
-```
-$ git clone https://github.com/kelmerpassos/ipet_api.git
-```
-##### **Acesse a pasta _ipet_**
-```
-$ cd ipet
-```
-Faça o download e instalação do Docker e Docker Compose:
-- [Docker](https://docs.docker.com/engine/install/)
