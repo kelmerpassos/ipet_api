@@ -31,3 +31,4 @@ def authentication(authenticate_response):
 def authentication_refresh(authenticate_response):
     json = authenticate_response.get_json()
     return {"Authorization": f"Bearer {json['refresh_token']}"} 
+    
