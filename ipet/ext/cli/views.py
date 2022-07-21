@@ -5,6 +5,7 @@ from ipet.ext.auth.models import User
 from ipet.ext.customer.models import AssocProductCustomer, Customer
 from ipet.ext.db import db
 from ipet.ext.product.models import Product
+from werkzeug.security import generate_password_hash
 
 
 def create_db():
@@ -15,7 +16,19 @@ def create_db():
     """
     try:
         db.create_all()
-        return "Banco criado com sucesso!"
+        return "Database created successfully!"
+    except Exception as exp:
+        return f"Erro: {exp.args[0]}"
+
+def drop_db():
+    """Delete the table structure.
+
+    Returns:
+        str: Error or success message.
+    """
+    try:
+        db.drop_all()
+        return "Database successfully deleted!"
     except Exception as exp:
         return f"Erro: {exp.args[0]}"
 
@@ -26,7 +39,7 @@ def populate_db():
     Returns:
         str: Error or success message.
     """
-    user = User(username="admin", password="admin")
+    user = User(username="admin", password=generate_password_hash("admin"))
     customer1 = Customer(cpf=38164206572, full_name="Kelmer Souza Passos")
     customer2 = Customer(cpf=48154206554, full_name="Gabriele Pinheiro Passos")
     customer3 = Customer(cpf=48154202154, full_name="Randall Heller")
@@ -53,30 +66,30 @@ def populate_db():
 
     product4=Product(
         full_name="Macarrão Miojo",
-        full_description="Macarrão parafuso",
+        full_description="Macarrão Penne",
         brand="Vitarela",
         price=14.25,)
     
-    # assoc_product1 = AssocProductCustomer(
-    #     product=Product(
-    #         full_name="Biscoito",
-    #         full_description="Biscoito de Chocolate",
-    #         brand="Vitarela",
-    #         price=14.25,
-    #     ),
-    #     created_at=datetime.now(),
-    # )
-    # assoc_product2 = AssocProductCustomer(
-    #     product=Product(
-    #         full_name="Macarrão",
-    #         full_description="Macarrão parafuso",
-    #         brand="Vitarela",
-    #         price=14.25,
-    #     ),
-    #     created_at=datetime.now(),
-    # )
-    # customer1.products.append(assoc_product1)
-    # customer1.products.append(assoc_product2)
+    assoc_product1 = AssocProductCustomer(
+        product=Product(
+            full_name="Arroz",
+            full_description="Arroz branco",
+            brand="Mioto",
+            price=14.25,
+        ),
+        created_at=datetime.now(),
+    )
+    assoc_product2 = AssocProductCustomer(
+        product=Product(
+            full_name="Vinagre",
+            full_description="Vinagre de limão",
+            brand="Mioto",
+            price=14.25,
+        ),
+        created_at=datetime.now(),
+    )
+    customer1.products.append(assoc_product1)
+    customer1.products.append(assoc_product2)
     db.session.add(user)
     db.session.add(customer1)
     db.session.add(customer2)
@@ -90,6 +103,6 @@ def populate_db():
     db.session.add(product4)
     try:
         db.session.commit()
-        return "Registros criados com sucesso!"
+        return "Records created successfully!"
     except Exception as exp:
         return f"Erro: {exp.args[0]}"

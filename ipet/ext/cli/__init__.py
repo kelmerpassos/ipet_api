@@ -18,5 +18,9 @@ def init_app(app: Flask):
         click.echo(views.create_db())
 
     @app.cli.command()
+    def drop_db():
+        click.echo(views.drop_db())
+
+    @app.cli.command()
     def populate_db():
         click.echo(views.populate_db())
