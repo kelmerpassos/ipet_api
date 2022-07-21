@@ -27,11 +27,6 @@ services:
     tty: true
     environment:
       FLASK_ENV: development
-      FLASK_SECRET_KEY: chavedesenvolvimento
-      FLASK_SQLALCHEMY_DATABASE_URI: postgresql+psycopg2://postgres:postgres@db:5432/DBIPet
-      FLASK_REDIS_URL : redis://redis:6379/0
-      FLASK_JWT_ACCESS_TOKEN_EXPIRES: 3600
-      FLASK_JWT_REFRESH_TOKEN_EXPIRES: 604800
       FLASK_SSH_HOST: "192.168.1.5"
       FLASK_SSH_PORT: 22
       FLASK_SSH_USER: "teste"
