@@ -52,4 +52,4 @@ def product_json():
 
 @fixture
 def customer_json():
-    return {"cpf": 11111111111, "fullName": "testing"}
+    return {"cpf": 11111111111, "fullName": "testing", "address": "rua testing"}

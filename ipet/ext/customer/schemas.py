@@ -22,6 +22,7 @@ class CustomerReadSchema(ma.SQLAlchemySchema):
         model = Customer
 
     full_name = ma.auto_field(data_key="fullName")
+    address = ma.auto_field()
     created_at = ma.auto_field(data_key="createdAt")
 
 
@@ -36,6 +37,7 @@ class CustomerSchema(ma.SQLAlchemySchema):
 
     cpf = ma.auto_field(load_only=True, validate=Range(0, 99999999999))
     full_name = ma.auto_field(data_key="fullName")
+    address = ma.auto_field()
     created_at = ma.auto_field(dump_only=True, data_key="createdAt")
 
     @validates("cpf")

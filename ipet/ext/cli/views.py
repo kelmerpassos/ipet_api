@@ -42,12 +42,28 @@ def populate_db():
         str: Error or success message.
     """
     user = User(username="admin", password=generate_password_hash("admin"))
-    customer1 = Customer(cpf=38164206572, full_name="Kelmer Souza Passos")
-    customer2 = Customer(cpf=48154206554, full_name="Gabriele Pinheiro Passos")
-    customer3 = Customer(cpf=48154202154, full_name="Randall Heller")
-    customer4 = Customer(cpf=48155465259, full_name="Brooke Champlin")
-    customer5 = Customer(cpf=48154289518, full_name="Andres Franecki")
-    customer6 = Customer(cpf=48154106556, full_name="Dr. Mable O'Kon")
+    customer1 = Customer(
+        cpf=38164206572,
+        full_name="Kelmer Souza Passos",
+        address="3409 Bergstrom Prairie",
+    )
+    customer2 = Customer(
+        cpf=48154206554,
+        full_name="Gabriele Pinheiro Passos",
+        address="08433 Glover Key",
+    )
+    customer3 = Customer(
+        cpf=48154202154, full_name="Randall Heller", address="94407 Lonny Ports"
+    )
+    customer4 = Customer(
+        cpf=48155465259, full_name="Brooke Champlin", address="3361 Kovacek Road"
+    )
+    customer5 = Customer(
+        cpf=48154289518, full_name="Andres Franecki", address="1319 Ebba Village"
+    )
+    customer6 = Customer(
+        cpf=48154106556, full_name="Dr. Mable O'Kon", address="8254 Bradtke Tunnel"
+    )
     product1 = Product(
         full_name="Biscoito",
         full_description="Biscoito de Chocolate",
