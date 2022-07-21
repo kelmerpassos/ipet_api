@@ -1,11 +1,12 @@
 """Terminal functions module."""
 from datetime import datetime
 
+from werkzeug.security import generate_password_hash
+
 from ipet.ext.auth.models import User
 from ipet.ext.customer.models import AssocProductCustomer, Customer
 from ipet.ext.db import db
 from ipet.ext.product.models import Product
-from werkzeug.security import generate_password_hash
 
 
 def create_db():
@@ -19,6 +20,7 @@ def create_db():
         return "Database created successfully!"
     except Exception as exp:
         return f"Erro: {exp.args[0]}"
+
 
 def drop_db():
     """Delete the table structure.
@@ -46,30 +48,33 @@ def populate_db():
     customer4 = Customer(cpf=48155465259, full_name="Brooke Champlin")
     customer5 = Customer(cpf=48154289518, full_name="Andres Franecki")
     customer6 = Customer(cpf=48154106556, full_name="Dr. Mable O'Kon")
-    product1=Product(
-            full_name="Biscoito",
-            full_description="Biscoito de Chocolate",
-            brand="Vitarela",
-            price=14.25,
-        )
-    product2=Product(
+    product1 = Product(
+        full_name="Biscoito",
+        full_description="Biscoito de Chocolate",
+        brand="Vitarela",
+        price=14.25,
+    )
+    product2 = Product(
         full_name="Macarrão",
         full_description="Macarrão parafuso",
         brand="Vitarela",
-        price=14.25,)
+        price=14.25,
+    )
 
-    product3=Product(
+    product3 = Product(
         full_name="Macarrão integral",
         full_description="Macarrão parafuso",
         brand="Vitarela",
-        price=14.25,)
+        price=14.25,
+    )
 
-    product4=Product(
+    product4 = Product(
         full_name="Macarrão Miojo",
         full_description="Macarrão Penne",
         brand="Vitarela",
-        price=14.25,)
-    
+        price=14.25,
+    )
+
     assoc_product1 = AssocProductCustomer(
         product=Product(
             full_name="Arroz",

@@ -1,16 +1,18 @@
 """Module that performs client package tasks."""
-from logging import Logger
-from flask_apscheduler import APScheduler
-from pathlib import Path
-from ipet.ext.libs.ssh import create_ssh_client
-from ipet.ext.config import environment_var
-from scp import SCPClient
-import aiofiles
 import asyncio
-from ipet.ext.customer.models import AssocProductCustomer
+from logging import Logger
+from pathlib import Path
+
+import aiofiles
+from flask_apscheduler import APScheduler
+from scp import SCPClient
+
+from ipet.ext.config import environment_var
+from ipet.ext.customer.models import AssocProductCustomer, Customer
 from ipet.ext.customer.schemas import ProductCustomerSchema
-from ipet.ext.customer.models import Customer
+from ipet.ext.libs.ssh import create_ssh_client
 from ipet.ext.product.models import Product
+
 
 async def read_base_offline(filename: str, logger: Logger):
     """Read validates and saves, offline database record.
@@ -32,13 +34,18 @@ async def read_base_offline(filename: str, logger: Logger):
                 customer = Customer.query.get(data[0])
                 product = Product.query.get(data[1])
                 if customer and product:
-                    ass = AssocProductCustomer(customer=customer, product=product, created_at=data[2])
+                    ass = AssocProductCustomer(
+                        customer=customer, product=product, created_at=data[2]
+                    )
                     ass.save()
                 else:
-                    logger.error(f"ID not found: product_id {data[1]}, customer_id {data[0]}")
+                    logger.error(
+                        f"ID not found: product_id {data[1]}, customer_id {data[0]}"
+                    )
             else:
-                logger.info(f"Customer already owns this product: product_id {data[1]}, customer_id {data[0]}")
-
+                logger.info(
+                    f"Customer already owns this product: product_id {data[1]}, customer_id {data[0]}"
+                )
 
 
 def register_tasks(scheduler: APScheduler):

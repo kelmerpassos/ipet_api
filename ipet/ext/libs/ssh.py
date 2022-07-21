@@ -1,5 +1,5 @@
 """Module responsible for ssh connections."""
-from paramiko import SSHClient, AutoAddPolicy
+from paramiko import AutoAddPolicy, SSHClient
 
 
 def create_ssh_client(server: str, port: int, user: str, password: str) -> SSHClient:

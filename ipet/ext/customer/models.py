@@ -12,7 +12,9 @@ class Customer(db.Model, ManagementMixin):
     cpf = db.Column(db.BigInteger, nullable=False, unique=True)
     full_name = db.Column(db.String(), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=db.func.now())
-    products = db.relationship("AssocProductCustomer", back_populates="customer", cascade="all, delete")
+    products = db.relationship(
+        "AssocProductCustomer", back_populates="customer", cascade="all, delete"
+    )
 
 
 class AssocProductCustomer(db.Model, ManagementMixin):
